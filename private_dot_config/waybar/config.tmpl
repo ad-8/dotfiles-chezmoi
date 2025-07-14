@@ -261,8 +261,15 @@
         "interval": 10,
         "tooltip": false,
         "format": "{}",
-        "return-type": "json",
-        "exec": "$HOME/scripts/bb/i3vpn.clj"
+        "return-type":
+           {{- if eq .chezmoi.hostname "ax-fuji" -}} "json"
+           {{- else -}} "text"
+           {{- end }},
+        "exec":
+           {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/scripts/bb/vpn2.clj"
+           {{- else if eq .chezmoi.hostname "ax-fuji" -}} "$HOME/scripts/bb/i3vpn.clj"
+           {{- else -}} "echo 'TODO config custom/vpn'"
+           {{- end }}
     },
     "custom/licht": {
         "interval": 10,
