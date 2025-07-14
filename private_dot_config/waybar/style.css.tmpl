@@ -47,9 +47,12 @@ tooltip label {
     border-bottom: 3px solid white;
 }
 
-/* #clock { */
-/*     background-color: #64727D; */
-/* } */
+#clock {
+    color: {{- if eq .chezmoi.hostname "ax-mac" -}} #d08770
+           {{- else if eq .chezmoi.hostname "ax-fuji" -}} #ebcb8b
+           {{- else -}} white
+           {{- end }};
+}
 
 #battery {
     color: white;
