@@ -27,6 +27,7 @@
         "custom/licht",
         "custom/sep2",
         "custom/disk",
+        "custom/memory",
         //        "network",
         //        "power-profiles-daemon",
         //        "cpu",
@@ -284,6 +285,13 @@
         "format": "{}",
         "return-type": "json",
         "exec": "$HOME/scripts/bb/dwm_disk_space.clj json"
+    },
+    "custom/memory": {
+        "interval": 10,
+        "tooltip": false,
+        "format": "{}",
+        "return-type": "json",
+        "exec": "$HOME/scripts/bb/dwm_memory.clj json"
     },
     "custom/weather": {
         "interval": 600,
