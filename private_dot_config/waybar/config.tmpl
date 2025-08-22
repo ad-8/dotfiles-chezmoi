@@ -6,13 +6,21 @@
     // "width": 1280, // Waybar width
     "spacing": 10, // Gaps between modules (4px)
     // Choose the order of the modules
+    //"modules-left": [
+    //    "hyprland/workspaces",
+    //    "hyprland/mode",
+    //    "hyprland/scratchpad",
+    //    "custom/media",
+    //    "hyprland/windowcount",
+    //    "hyprland/window",
+    //],
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/mode",
-        "hyprland/scratchpad",
-        "custom/media",
-        "hyprland/windowcount",
-        "hyprland/window",
+        "sway/workspaces",
+        "sway/mode",
+     //   "sway/scratchpad",
+     //   "custom/media",
+     //   "sway/windowcount",
+        "sway/window",
     ],
     "modules-center": [
         "clock",
@@ -314,5 +322,10 @@
         "format-windowed": "[]=",
         // "format-fullscreen": "[{}]",
         "separate-outputs": true
+    },
+        "sway/mode": {
+        "format": "{}",
+        "max-length": 100
     }
+
 }
