@@ -326,6 +326,20 @@
         "sway/mode": {
         "format": "{}",
         "max-length": 100
+    },
+    "sway/window": {
+        "format": "{title}",
+//        "icon": true,
+//        "max-length": 50,
+             "rewrite": {
+                   "(.*) - Mozilla Firefox": "  $1",
+                   "(.*) — Mozilla Firefox": "  $1",
+                   "(.*) - Brave": "🌎  $1",
+                   "(.*) - vim": " $1",
+                   "vim (.*)": " $1",
+                   "(.*) - zsh": " [$1]"
+            }
     }
+
 
 }
