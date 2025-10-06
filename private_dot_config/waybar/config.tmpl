@@ -53,22 +53,27 @@
         //        "custom/power"
     ],
     // Modules configuration
-    // "hyprland/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        //"format": "{name}: {icon}",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "3",
+            "4": "4",
+            "5": "",
+            "6": "6",
+            "7": "7",
+            "8": "",
+            "9": "",
+         //   "urgent": "",
+         //   "focused": "",
+         //   "default": ""
+        }
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -307,6 +312,13 @@
         "format": "{}",
         "return-type": "text",
         "exec": "$HOME/scripts/bb/weather.clj dwm"
+    },
+    "custom/niri-wincount": {
+        "interval": 1,
+        "tooltip": false,
+        "format": "[{}]",
+        "return-type": "text",
+        "exec": "ruby $HOME/sync/nirix/main.rb count"
     },
     "custom/sep1": {
         "format": " | ",
