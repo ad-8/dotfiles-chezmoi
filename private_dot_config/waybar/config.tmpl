@@ -281,6 +281,7 @@
            {{- end }},
         "exec":
            {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/scripts/bb/vpn2.clj"
+           {{- else if eq .chezmoi.hostname "ax-bee" -}} "$HOME/scripts/bb/vpn2.clj"
            {{- else if eq .chezmoi.hostname "ax-fuji" -}} "$HOME/scripts/bb/i3vpn.clj"
            {{- else -}} "echo 'TODO config custom/vpn'"
            {{- end }}
