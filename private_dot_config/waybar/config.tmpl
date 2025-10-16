@@ -28,6 +28,7 @@
     "modules-right": [
         //        "mpd",
         //        "idle_inhibitor",
+        "custom/music-info",
         "custom/weather",
         "custom/sep2",
         "pulseaudio",
@@ -320,6 +321,13 @@
         "format": "[{}]",
         "return-type": "text",
         "exec": "ruby $HOME/sync/nirix/main.rb count"
+    },
+    "custom/music-info": {
+        "interval": 5,
+        "tooltip": false,
+        "format": "[{}]",
+        "return-type": "text",
+        "exec": "ruby $HOME/my/scripts/waybar-music-info.rb"
     },
     "custom/sep1": {
         "format": " | ",
