@@ -323,8 +323,9 @@
         "exec": "ruby $HOME/sync/nirix/main.rb count"
     },
     "custom/music-info": {
-        "interval": 5,
+        "interval": 1,
         "tooltip": false,
+        "on-click": "playerctl play-pause",
         "format": "[{}]",
         "return-type": "text",
         "exec": "ruby $HOME/my/scripts/waybar-music-info.rb"
