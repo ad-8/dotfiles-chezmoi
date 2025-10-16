@@ -24,12 +24,12 @@
     ],
     "modules-center": [
         "clock",
+        "custom/weather",
     ],
     "modules-right": [
         //        "mpd",
         //        "idle_inhibitor",
         "custom/music-info",
-        "custom/weather",
         "custom/sep2",
         "pulseaudio",
         "custom/sep2",
@@ -311,6 +311,7 @@
     "custom/weather": {
         "interval": 600,
         "tooltip": false,
+        "on-click": "~/scripts/bb/weather.clj dunst",
         "format": "{}",
         "return-type": "text",
         "exec": "$HOME/scripts/bb/weather.clj dwm"
