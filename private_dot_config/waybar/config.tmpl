@@ -23,7 +23,7 @@
         "custom/sep2",
         "custom/licht",
         "custom/sep2",
-        "cpu",
+        "custom/cpu",
         "custom/sep2",
         "custom/disk",
         "custom/memory",
@@ -67,10 +67,6 @@
         "format": " {:%a %d.%m.   %H:%M:%S}",
         "format-alt": "{:%Y-%m-%d}",
         "interval": 1
-    },
-    "cpu": {
-        "format": " {load}",
-        "interval": 5
     },
     "battery": {
         "states": {
@@ -159,6 +155,13 @@
         "format": "{}",
         "return-type": "text",
         "exec": "$HOME/.cargo/bin/tlbx waybar licht"
+    },
+    "custom/cpu": {
+        "interval": 5,
+        "tooltip": false,
+        "format": "{}",
+        "return-type": "text",
+        "exec": "$HOME/.cargo/bin/tlbx waybar load"
     },
     "custom/disk": {
         "interval": 10,
