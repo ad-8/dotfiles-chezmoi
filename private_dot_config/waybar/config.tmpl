@@ -33,7 +33,6 @@
         "custom/vpn",
         "custom/sep2",
         "tray"
-        //        "custom/power"
     ],
 
     // Modules configuration
@@ -151,30 +150,6 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
-    "custom/power": {
-        "format": "⏻ ",
-        "tooltip": false,
-        "menu": "on-click",
-        "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-        "menu-actions": {
-            "shutdown": "shutdown",
-            "reboot": "reboot",
-            "suspend": "systemctl suspend",
-            "hibernate": "systemctl hibernate"
-        }
-    },
     // https://git.sr.ht/%7Ekrathalan/waybar-modules
     "custom/vpn": {
         "interval": 10,
@@ -185,9 +160,9 @@
            {{- else -}} "json"
            {{- end }},
         "exec":
-           {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/scripts/bb/vpn2.clj"
-           {{- else if eq .chezmoi.hostname "ax-bee" -}} "$HOME/scripts/bb/vpn2.clj"
-           {{- else if eq .chezmoi.hostname "ax-fuji" -}} "$HOME/scripts/bb/i3vpn.clj"
+           {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/.cargo/bin/tlbx waybar vpn"
+           {{- else if eq .chezmoi.hostname "ax-bee" -}} "$HOME/.cargo/bin/tlbx waybar vpn"
+           {{- else if eq .chezmoi.hostname "ax-fuji" -}} "$HOME/scripts/legacy-xorg-dwm/i3vpn.clj"
            {{- else -}} "echo 'TODO config custom/vpn'"
            {{- end }}
     },
