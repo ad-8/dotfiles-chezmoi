@@ -21,6 +21,8 @@
         "custom/sep2",
         "pulseaudio",
         "custom/sep2",
+        "custom/notification-status",
+        "custom/sep2",
         "custom/licht",
         "custom/sep2",
         "custom/cpu",
@@ -192,6 +194,13 @@
         "format": "[{}]",
         "return-type": "text",
         "exec": "$HOME/.cargo/bin/tlbx waybar music"
+    },
+    "custom/notification-status": {
+        "interval": 5,
+        "tooltip": false,
+        "format": "{}",
+        "return-type": "text",
+        "exec": "$HOME/.cargo/bin/tlbx waybar notification-status"
     },
     "custom/sep1": {
         "format": " | ",
