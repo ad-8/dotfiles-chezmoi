@@ -13,6 +13,7 @@
         "sway/window",
     ],
     "modules-center": [
+        "custom/date",
         "clock",
         "custom/weather",
     ],
@@ -62,10 +63,18 @@
         "icon-size": 15,
         "spacing": 10,
     },
+    "custom/date": {
+        "interval": 30,
+        "tooltip": false,
+        "format": "{}",
+        "return-type": "text",
+        "exec": "$HOME/.cargo/bin/tlbx waybar date"
+    },
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": " {:%a %d.%m.   %H:%M:%S}",
+        // "format": " {:%a %d.%m.   %H:%M:%S}",
+        "format": " {:%H:%M:%S}",
         "format-alt": "{:%Y-%m-%d}",
         "interval": 1
     },
