@@ -8,7 +8,10 @@
     "spacing": 10, // Gaps between modules [px]
 
     "modules-left": [
+        "custom/logo",
+        "custom/sep2",
         "sway/workspaces",
+        "custom/sep2",
         "sway/mode",
         "sway/window",
     ],
@@ -210,6 +213,18 @@
         "format": "{}",
         "return-type": "text",
         "exec": "$HOME/.cargo/bin/tlbx waybar notification-status"
+    },
+    // https://github.com/Alexays/Waybar/wiki/Module:-Custom:-Menu
+    "custom/logo": {
+        "format": " ",
+        "tooltip-format": "Menu\n\nClick to open the SnowflakeMenu",
+        "menu": "on-click",
+        "menu-file": "~/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "About": "notify-send 'NixOS 25.05' 'Codename: Warbler'",
+            "reboot": "notify-send reboot test",
+            "shutdown": "notify-send shutdown test",
+        },
     },
     "custom/sep1": {
         "format": " | ",
