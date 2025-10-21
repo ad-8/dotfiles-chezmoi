@@ -7,6 +7,13 @@
             </object>
         </child>
 
+        <!-- acts as a blank space -->
+        <child>
+          <object class="GtkMenuItem">
+            <property name="label"></property> <!-- Empty label -->
+            <property name="sensitive">false</property> <!-- Disables interaction -->
+          </object>
+        </child>
 
         <child>
             <object class="GtkMenuItem" id="reboot">
