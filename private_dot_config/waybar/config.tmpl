@@ -69,7 +69,7 @@
         "tooltip": false,
         "format": "{}",
         "return-type": "text",
-        "exec": "$HOME/.cargo/bin/tlbx waybar date"
+        "exec": "$HOME/scripts/waybar.clj date"
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -155,8 +155,8 @@
            {{- else -}} "json"
            {{- end }},
         "exec":
-           {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/.cargo/bin/tlbx waybar vpn"
-           {{- else if eq .chezmoi.hostname "ax-bee" -}} "$HOME/.cargo/bin/tlbx waybar vpn"
+           {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/scripts/waybar.clj vpn"
+           {{- else if eq .chezmoi.hostname "ax-bee" -}} "$HOME/scripts/waybar.clj vpn"
            {{- else if eq .chezmoi.hostname "ax-fuji" -}} "$HOME/scripts/legacy-xorg-dwm/i3vpn.clj"
            {{- else -}} "echo 'TODO config custom/vpn'"
            {{- end }}
@@ -166,28 +166,28 @@
         "tooltip": false,
         "format": "{}",
         "return-type": "text",
-        "exec": "$HOME/.cargo/bin/tlbx waybar licht"
+        "exec": "$HOME/scripts/waybar.clj licht"
     },
     "custom/cpu": {
         "interval": 5,
         "tooltip": false,
         "format": "{}",
         "return-type": "text",
-        "exec": "$HOME/.cargo/bin/tlbx waybar load"
+        "exec": "$HOME/scripts/waybar.clj load"
     },
     "custom/disk": {
         "interval": 10,
         "tooltip": false,
         "format": "{}",
         "return-type": "json",
-        "exec": "$HOME/.cargo/bin/tlbx waybar disk"
+        "exec": "$HOME/scripts/waybar.clj disk"
     },
     "custom/memory": {
         "interval": 10,
         "tooltip": false,
         "format": "{}",
         "return-type": "json",
-        "exec": "$HOME/.cargo/bin/tlbx waybar memory"
+        "exec": "$HOME/scripts/waybar.clj memory"
     },
     "custom/weather": {
         "interval": 600,
@@ -203,7 +203,7 @@
         "on-click": "playerctl play-pause",
         "format": "[{}]",
         "return-type": "text",
-        "exec": "$HOME/.cargo/bin/tlbx waybar music"
+        "exec": "$HOME/scripts/waybar.clj music"
     },
     "custom/notification-status": {
         "interval": 5,
@@ -211,7 +211,7 @@
         "on-click": "$HOME/scripts/dunst_toggle_and_notify.clj",
         "format": "{}",
         "return-type": "text",
-        "exec": "$HOME/.cargo/bin/tlbx waybar notification-status"
+        "exec": "$HOME/scripts/waybar.clj notification-status"
     },
     // https://github.com/Alexays/Waybar/wiki/Module:-Custom:-Menu
     "custom/snowflake": {
