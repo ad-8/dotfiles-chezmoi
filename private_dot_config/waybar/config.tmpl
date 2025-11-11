@@ -7,7 +7,12 @@
     // "width": 1280, // Waybar width
     "spacing": 10, // Gaps between modules [px]
 
-    "output": "DP-1",
+    
+    {{- if eq .chezmoi.hostname "ax-mac" -}} "output": "DP-1",
+    {{- else if eq .chezmoi.hostname "ax-bee" -}} "output": "DP-1",
+    {{- else -}} "output": "HDMI-A-1",
+    {{- end }}
+
 
     "modules-left": [
         "custom/snowflake",
