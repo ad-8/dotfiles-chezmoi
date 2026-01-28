@@ -7,17 +7,23 @@
     // "width": 1280, // Waybar width
     "spacing": 10, // Gaps between modules [px]
 
+    
+    {{- if eq .chezmoi.hostname "ax-mac" -}} "output": "DP-1",
+    {{- else if eq .chezmoi.hostname "ax-bee" -}} "output": "DP-1",
+    {{- else -}} "output": "HDMI-A-1",
+    {{- end }}
+
+
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
+        "custom/snowflake",
+        "niri/workspaces",
     ],
     "modules-center": [
         "clock",
     ],
     "modules-right": [
-        "custom/vpn",
-        "custom/sep2",
-        "tray"
+        "tray",
+        "custom/sepempty"
     ],
 
     // Modules configuration
@@ -32,7 +38,7 @@
             "2": "  ",
             "3": " 3 ",
             "4": " 4 ",
-            "5": "  ",
+            "5": " 5 ",
             "6": " 6 ",
             "7": " 7 ",
             "8": "  ",
@@ -46,11 +52,20 @@
         "icon-size": 15,
         "spacing": 10,
     },
+    "custom/date": {
+        "interval": 30,
+        "tooltip": false,
+        "format": "{}",
+        "return-type": "text",
+        "exec": "$HOME/scripts/waybar.clj date"
+    },
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // "format": " {:%a %d.%m.   %H:%M:%S}",
+        // "format": " {:%H:%M:%S}",
         "format": "{:%H:%M}",
-        "format-alt": "{:%Y-%m-%d}",
+        "format-alt": "{:%H:%M:%S}",
         "interval": 1
     },
     "battery": {
@@ -125,12 +140,13 @@
         "format": "{}",
         "return-type":
            {{- if eq .chezmoi.hostname "ax-fuji" -}} "json"
-           {{- else -}} "json"
+           {{- else -}} "text"
            {{- end }},
         "exec":
-           {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/.cargo/bin/tlbx waybar vpn"
-           {{- else if eq .chezmoi.hostname "ax-bee" -}} "$HOME/.cargo/bin/tlbx waybar vpn"
+           {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/scripts/waybar.clj vpn"
+           {{- else if eq .chezmoi.hostname "ax-bee" -}} "$HOME/scripts/waybar.clj vpn"
            {{- else if eq .chezmoi.hostname "ax-fuji" -}} "$HOME/scripts/legacy-xorg-dwm/i3vpn.clj"
+           {{- else if eq .chezmoi.hostname "ax-x1c" -}} "$HOME/scripts/legacy-xorg-dwm/vpn2.clj"
            {{- else -}} "echo 'TODO config custom/vpn'"
            {{- end }}
     },
@@ -139,33 +155,34 @@
         "tooltip": false,
         "format": "{}",
         "return-type": "text",
-        "exec": "$HOME/.cargo/bin/tlbx waybar licht"
+        "exec": "$HOME/scripts/waybar.clj licht"
     },
     "custom/cpu": {
         "interval": 5,
         "tooltip": false,
         "format": "{}",
         "return-type": "text",
-        "exec": "$HOME/.cargo/bin/tlbx waybar load"
+        "exec": "$HOME/scripts/waybar.clj load"
     },
     "custom/disk": {
         "interval": 10,
         "tooltip": false,
         "format": "{}",
         "return-type": "json",
-        "exec": "$HOME/.cargo/bin/tlbx waybar disk"
+        "exec": "$HOME/scripts/waybar.clj disk"
     },
     "custom/memory": {
         "interval": 10,
         "tooltip": false,
         "format": "{}",
         "return-type": "json",
-        "exec": "$HOME/.cargo/bin/tlbx waybar memory"
+        "exec": "$HOME/scripts/waybar.clj memory"
     },
     "custom/weather": {
         "interval": 600,
         "tooltip": false,
         "on-click": "~/scripts/bb/weather.clj dunst",
+        "on-click-right": "~/scripts/bb/weather.clj plot",
         "format": "{}",
         "return-type": "text",
         "exec": "$HOME/scripts/bb/weather.clj dwm"
@@ -176,14 +193,28 @@
         "on-click": "playerctl play-pause",
         "format": "[{}]",
         "return-type": "text",
-        "exec": "$HOME/.cargo/bin/tlbx waybar music"
+        "exec": "$HOME/scripts/waybar.clj music"
     },
     "custom/notification-status": {
         "interval": 5,
         "tooltip": false,
+        "on-click": "$HOME/scripts/dunst_toggle_and_notify.clj",
         "format": "{}",
         "return-type": "text",
-        "exec": "$HOME/.cargo/bin/tlbx waybar notification-status"
+        "exec": "$HOME/scripts/waybar.clj notification-status"
+    },
+    // https://github.com/Alexays/Waybar/wiki/Module:-Custom:-Menu
+    "custom/snowflake": {
+        "format": "   ",
+        "tooltip-format": "Menu\n\nClick to open the SnowflakeMenu",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "~/.config/waybar/snowflake.xml",
+        "menu-actions": {
+            "About": "setsid $HOME/.cargo/bin/snowflake > /dev/null 2>&1 &",
+            "reboot": "notify-send reboot 'TODO: this is a work in progress ...'",
+            "shutdown": "notify-send shutdown 'TODO: this is a work in progress ...'",
+        },
     },
     "custom/sep1": {
         "format": " | ",
@@ -193,13 +224,28 @@
         "format": "•",
         "tooltip": false
     },
+    "custom/sep2b": {
+        "format": "•",
+        "tooltip": false
+    },
+    "custom/sepempty": {
+        "format": " ",
+        "tooltip": false
+    },
         "sway/mode": {
         "format": "{}",
         "max-length": 100
     },
-    "sway/window": {
+    "hyprland/windowcount": {
+        "format": "[{}]",
+        "format-empty": "[]=",
+        "format-windowed": "[]=",
+        // "format-fullscreen": "[{}]",
+        "separate-outputs": true
+    },
+    "hyprland/window": {
         "format": "{title}",
-        "icon": false,
+        "icon": true,
         "icon-size": 20,
 //        "max-length": 50,
              "rewrite": {
