@@ -16,10 +16,10 @@
 
     "modules-left": [
         "custom/snowflake",
-        "hyprland/workspaces",
-        "hyprland/windowcount",
-        "hyprland/mode",
-        "hyprland/window",
+        "niri/workspaces",
+        "niri/windowcount",
+        "niri/mode",
+        "niri/window",
     ],
     "modules-center": [
         "custom/date",
@@ -160,12 +160,13 @@
         "format": "{}",
         "return-type":
            {{- if eq .chezmoi.hostname "ax-fuji" -}} "json"
-           {{- else -}} "json"
+           {{- else -}} "text"
            {{- end }},
         "exec":
            {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/scripts/waybar.clj vpn"
            {{- else if eq .chezmoi.hostname "ax-bee" -}} "$HOME/scripts/waybar.clj vpn"
            {{- else if eq .chezmoi.hostname "ax-fuji" -}} "$HOME/scripts/legacy-xorg-dwm/i3vpn.clj"
+           {{- else if eq .chezmoi.hostname "ax-x1c" -}} "$HOME/scripts/legacy-xorg-dwm/vpn2.clj"
            {{- else -}} "echo 'TODO config custom/vpn'"
            {{- end }}
     },
