@@ -160,7 +160,7 @@
         "format": "{}",
         "return-type":
            {{- if eq .chezmoi.hostname "ax-fuji" -}} "json"
-           {{- else -}} "text"
+           {{- else -}} "json"
            {{- end }},
         "exec":
            {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/scripts/waybar.clj vpn"
