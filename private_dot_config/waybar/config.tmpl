@@ -174,7 +174,7 @@
            {{- if eq .chezmoi.hostname "ax-mac" -}} "$HOME/scripts/waybar.clj vpn"
            {{- else if eq .chezmoi.hostname "ax-bee" -}} "$HOME/scripts/waybar.clj vpn"
            {{- else if eq .chezmoi.hostname "ax-fuji" -}} "$HOME/scripts/legacy-xorg-dwm/i3vpn.clj"
-           {{- else if eq .chezmoi.hostname "ax-x1c" -}} "$HOME/scripts/legacy-xorg-dwm/vpn2.clj"
+           {{- else if eq .chezmoi.hostname "ax-x1c" -}} "$HOME/scripts/waybar.clj vpn"
            {{- else -}} "echo 'TODO config custom/vpn'"
            {{- end }}
     },
